@@ -79,6 +79,9 @@ public class GuestbookLocalServiceImpl extends GuestbookLocalServiceBaseImpl {
 
 		guestbookPersistence.update(guestbook);
 
+		resourceLocalService.addResources(user.getCompanyId(), groupId, userId,
+			       Guestbook.class.getName(), guestbookId, false, true, true);
+		
 		return guestbook;
 	}
 
