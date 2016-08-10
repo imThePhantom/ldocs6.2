@@ -4,14 +4,12 @@ import java.io.IOException;
 
 import java.util.List;
 
-
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletException;
 
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
-
 
 import com.liferay.docs.guestbook.model.Entry;
 import com.liferay.docs.guestbook.model.Guestbook;
@@ -42,23 +40,50 @@ public class GuestbookPortlet extends MVCPortlet {
 		String email = ParamUtil.getString(request, "email");
 		String message = ParamUtil.getString(request, "message");
 		long guestbookId = ParamUtil.getLong(request, "guestbookId");
+		long entryId = ParamUtil.getLong(request, "entryId");
 
-		try {
-			EntryLocalServiceUtil.addEntry(serviceContext.getUserId(),
-					guestbookId, userName, email, message, serviceContext);
+		if (entryId > 0) {
 
-			SessionMessages.add(request, "entryAdded");
+			try {
 
-			response.setRenderParameter("guestbookId",
-					Long.toString(guestbookId));
+				EntryLocalServiceUtil.updateEntry(serviceContext.getUserId(),
+						guestbookId, entryId, userName, email, message,
+						serviceContext);
 
-		} catch (Exception e) {
-			SessionErrors.add(request, e.getClass().getName());
+				SessionMessages.add(request, "entryAdded");
 
-			PortalUtil.copyRequestParameters(request, response);
+				response.setRenderParameter("guestbookId",
+						Long.toString(guestbookId));
 
-			response.setRenderParameter("mvcPath",
-					"/html/guestbook/edit_entry.jsp");
+			} catch (Exception e) {
+
+				SessionErrors.add(request, e.getClass().getName());
+
+				PortalUtil.copyRequestParameters(request, response);
+
+				response.setRenderParameter("mvcPath",
+						"/html/guestbook/edit_entry.jsp");
+			}
+
+		} else {
+
+			try {
+				EntryLocalServiceUtil.addEntry(serviceContext.getUserId(),
+						guestbookId, userName, email, message, serviceContext);
+
+				SessionMessages.add(request, "entryAdded");
+
+				response.setRenderParameter("guestbookId",
+						Long.toString(guestbookId));
+
+			} catch (Exception e) {
+				SessionErrors.add(request, e.getClass().getName());
+
+				PortalUtil.copyRequestParameters(request, response);
+
+				response.setRenderParameter("mvcPath",
+						"/html/guestbook/edit_entry.jsp");
+			}
 		}
 
 	}
@@ -86,6 +111,26 @@ public class GuestbookPortlet extends MVCPortlet {
 
 	}
 
+	public void deleteEntry (ActionRequest request, ActionResponse response) {
+
+	    long entryId = ParamUtil.getLong(request, "entryId");
+	    long guestbookId = ParamUtil.getLong(request, "guestbookId");
+
+	    try {
+
+	       ServiceContext serviceContext = ServiceContextFactory.getInstance(
+	         Entry.class.getName(), request);
+
+	                    response.setRenderParameter("guestbookId", Long.toString(guestbookId));
+
+	       EntryLocalServiceUtil.deleteEntry(entryId, serviceContext);
+
+	    } catch (Exception e) {
+
+	       SessionErrors.add(request, e.getClass().getName());
+	    }
+	}
+	
 	@Override
 	public void render(RenderRequest renderRequest,
 			RenderResponse renderResponse) throws PortletException, IOException {

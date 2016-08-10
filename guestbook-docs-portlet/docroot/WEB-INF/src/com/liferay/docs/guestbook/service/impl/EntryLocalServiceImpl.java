@@ -25,6 +25,7 @@ import com.liferay.docs.guestbook.service.base.EntryLocalServiceBaseImpl;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
 
@@ -87,6 +88,20 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 		return entry;
 	}
 
+	public Entry deleteEntry(long entryId, ServiceContext serviceContext)
+		    throws PortalException, SystemException {
+
+		    Entry entry = getEntry(entryId);
+
+		    resourceLocalService.deleteResource(
+		        serviceContext.getCompanyId(), Entry.class.getName(),
+		        ResourceConstants.SCOPE_INDIVIDUAL, entryId);
+
+		        entry = deleteEntry(entryId);
+
+		        return entry;
+		}
+	
 	public List<Entry> getEntries(long groupId, long guestbookId)
 			throws SystemException {
 
@@ -99,6 +114,39 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 		return entryPersistence.findByG_G(groupId, guestbookId, start, end);
 	}
 
+	public Entry updateEntry(
+	        long userId, long guestbookId, long entryId, String name,
+	        String email, String message, ServiceContext serviceContext)
+	    throws PortalException, SystemException {
+
+	    long groupId = serviceContext.getScopeGroupId();
+
+	    User user = userPersistence.findByPrimaryKey(userId);
+
+	    Date now = new Date();
+
+	    validate(name, email, message);
+
+	    Entry entry = getEntry(entryId);
+
+	    entry.setUserId(userId);
+	    entry.setUserName(user.getFullName());
+	    entry.setName(name);
+	    entry.setEmail(email);
+	    entry.setMessage(message);
+	    entry.setModifiedDate(serviceContext.getModifiedDate(now));
+	    entry.setExpandoBridgeAttributes(serviceContext);
+
+	    entryPersistence.update(entry);
+
+	    resourceLocalService.updateResources(
+	        user.getCompanyId(), groupId, Entry.class.getName(), entryId,
+	        serviceContext.getGroupPermissions(),
+	        serviceContext.getGuestPermissions());
+
+	    return entry;
+	}
+	
 	protected void validate(String name, String email, String entry)
 			throws PortalException {
 		if (Validator.isNull(name)) {

@@ -313,6 +313,11 @@ public interface EntryLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	public com.liferay.docs.guestbook.model.Entry deleteEntry(long entryId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<com.liferay.docs.guestbook.model.Entry> getEntries(
 		long groupId, long guestbookId)
@@ -322,6 +327,13 @@ public interface EntryLocalService extends BaseLocalService,
 	public java.util.List<com.liferay.docs.guestbook.model.Entry> getEntries(
 		long groupId, long guestbookId, int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public com.liferay.docs.guestbook.model.Entry updateEntry(long userId,
+		long guestbookId, long entryId, java.lang.String name,
+		java.lang.String email, java.lang.String message,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getEntriesCount(long groupId, long guestbookId)
