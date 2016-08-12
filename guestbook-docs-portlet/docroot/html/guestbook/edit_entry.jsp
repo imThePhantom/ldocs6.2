@@ -24,7 +24,7 @@
 	<aui:model-context bean="<%=entry%>" model="<%=Entry.class%>" />
 
 	<aui:fieldset>
-		<aui:input name="entryId" type="hiden"/>
+		<aui:input name="entryId" type="hidden" />
 		<aui:input name="guestbookId" type="hidden"
 			value='<%=entry == null ? guestbookId : entry
 							.getGuestbookId()%>' />

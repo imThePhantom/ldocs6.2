@@ -24,6 +24,8 @@ import com.liferay.docs.guestbook.model.Entry;
 import com.liferay.docs.guestbook.service.base.EntryLocalServiceBaseImpl;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.search.Indexer;
+import com.liferay.portal.kernel.search.IndexerRegistryUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.model.User;
@@ -83,25 +85,31 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 		entryPersistence.update(entry);
 
 		resourceLocalService.addResources(user.getCompanyId(), groupId, userId,
-			       Entry.class.getName(), entryId, false, true, true);
-		
+				Entry.class.getName(), entryId, false, true, true);
+
+		Indexer indexer = IndexerRegistryUtil.nullSafeGetIndexer(Entry.class);
+		indexer.reindex(entry);
+
 		return entry;
 	}
 
 	public Entry deleteEntry(long entryId, ServiceContext serviceContext)
-		    throws PortalException, SystemException {
+			throws PortalException, SystemException {
 
-		    Entry entry = getEntry(entryId);
+		Entry entry = getEntry(entryId);
 
-		    resourceLocalService.deleteResource(
-		        serviceContext.getCompanyId(), Entry.class.getName(),
-		        ResourceConstants.SCOPE_INDIVIDUAL, entryId);
+		resourceLocalService.deleteResource(serviceContext.getCompanyId(),
+				Entry.class.getName(), ResourceConstants.SCOPE_INDIVIDUAL,
+				entryId);
 
-		        entry = deleteEntry(entryId);
+		entry = deleteEntry(entryId);
+		
+		Indexer indexer = IndexerRegistryUtil.getIndexer(Entry.class);
+		indexer.delete(entry);
+		
+		return entry;
+	}
 
-		        return entry;
-		}
-	
 	public List<Entry> getEntries(long groupId, long guestbookId)
 			throws SystemException {
 
@@ -114,39 +122,42 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 		return entryPersistence.findByG_G(groupId, guestbookId, start, end);
 	}
 
-	public Entry updateEntry(
-	        long userId, long guestbookId, long entryId, String name,
-	        String email, String message, ServiceContext serviceContext)
-	    throws PortalException, SystemException {
+	public Entry updateEntry(long userId, long guestbookId, long entryId,
+			String name, String email, String message,
+			ServiceContext serviceContext) throws PortalException,
+			SystemException {
 
-	    long groupId = serviceContext.getScopeGroupId();
+		long groupId = serviceContext.getScopeGroupId();
 
-	    User user = userPersistence.findByPrimaryKey(userId);
+		User user = userPersistence.findByPrimaryKey(userId);
 
-	    Date now = new Date();
+		Date now = new Date();
 
-	    validate(name, email, message);
+		validate(name, email, message);
 
-	    Entry entry = getEntry(entryId);
+		Entry entry = getEntry(entryId);
 
-	    entry.setUserId(userId);
-	    entry.setUserName(user.getFullName());
-	    entry.setName(name);
-	    entry.setEmail(email);
-	    entry.setMessage(message);
-	    entry.setModifiedDate(serviceContext.getModifiedDate(now));
-	    entry.setExpandoBridgeAttributes(serviceContext);
+		entry.setUserId(userId);
+		entry.setUserName(user.getFullName());
+		entry.setName(name);
+		entry.setEmail(email);
+		entry.setMessage(message);
+		entry.setModifiedDate(serviceContext.getModifiedDate(now));
+		entry.setExpandoBridgeAttributes(serviceContext);
 
-	    entryPersistence.update(entry);
+		entryPersistence.update(entry);
 
-	    resourceLocalService.updateResources(
-	        user.getCompanyId(), groupId, Entry.class.getName(), entryId,
-	        serviceContext.getGroupPermissions(),
-	        serviceContext.getGuestPermissions());
+		resourceLocalService.updateResources(user.getCompanyId(), groupId,
+				Entry.class.getName(), entryId,
+				serviceContext.getGroupPermissions(),
+				serviceContext.getGuestPermissions());
 
-	    return entry;
+		Indexer indexer = IndexerRegistryUtil.getIndexer(Entry.class);
+		indexer.reindex(entry);
+		
+		return entry;
 	}
-	
+
 	protected void validate(String name, String email, String entry)
 			throws PortalException {
 		if (Validator.isNull(name)) {
