@@ -18,13 +18,19 @@ import java.util.Date;
 import java.util.List;
 
 import com.liferay.docs.guestbook.GuestbookNameException;
+import com.liferay.docs.guestbook.model.Entry;
 import com.liferay.docs.guestbook.model.Guestbook;
+import com.liferay.docs.guestbook.service.EntryLocalServiceUtil;
 import com.liferay.docs.guestbook.service.base.GuestbookLocalServiceBaseImpl;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.search.Indexer;
+import com.liferay.portal.kernel.search.IndexerRegistryUtil;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
+import com.liferay.portal.service.UserLocalServiceUtil;
 
 /**
  * The implementation of the guestbook local service.
@@ -80,7 +86,38 @@ public class GuestbookLocalServiceImpl extends GuestbookLocalServiceBaseImpl {
 		guestbookPersistence.update(guestbook);
 
 		resourceLocalService.addResources(user.getCompanyId(), groupId, userId,
-			       Guestbook.class.getName(), guestbookId, false, true, true);
+				Guestbook.class.getName(), guestbookId, false, true, true);
+
+		Indexer indexer = IndexerRegistryUtil
+				.nullSafeGetIndexer(Guestbook.class);
+
+		indexer.reindex(guestbook);
+
+		return guestbook;
+	}
+
+	public Guestbook deleteGuestbook(long guestbookId,
+			ServiceContext serviceContext) throws SystemException,
+			PortalException {
+		Guestbook guestbook = getGuestbook(guestbookId);
+		List<Entry> entries = EntryLocalServiceUtil.getEntries(
+				serviceContext.getScopeGroupId(), guestbookId);
+
+		for (Entry entry : entries) {
+			EntryLocalServiceUtil.deleteEntry(entry.getEntryId(),
+					serviceContext);
+		}
+
+		resourceLocalService.deleteResource(serviceContext.getCompanyId(),
+				Guestbook.class.getName(), ResourceConstants.SCOPE_INDIVIDUAL,
+				guestbookId);
+
+		guestbook = deleteGuestbook(guestbook);
+
+		Indexer indexer = IndexerRegistryUtil
+				.nullSafeGetIndexer(Guestbook.class);
+
+		indexer.delete(guestbook);
 		
 		return guestbook;
 	}
@@ -92,6 +129,40 @@ public class GuestbookLocalServiceImpl extends GuestbookLocalServiceBaseImpl {
 	public List<Guestbook> getGuestbooks(long groupId, int start, int end)
 			throws SystemException {
 		return guestbookPersistence.findByGroupId(groupId, start, end);
+	}
+
+	public int getGuestbooksCount(long groupId) throws SystemException {
+		return guestbookPersistence.countByGroupId(groupId);
+	}
+
+	public Guestbook updateGuestbook(long userId, long guestbookId,
+			String name, ServiceContext serviceContext) throws SystemException,
+			PortalException {
+		Date now = new Date();
+
+		validate(name);
+
+		Guestbook guestbook = getGuestbook(guestbookId);
+		User user = UserLocalServiceUtil.getUser(userId);
+
+		guestbook.setUserId(userId);
+		guestbook.setUserName(user.getFullName());
+		guestbook.setModifiedDate(serviceContext.getModifiedDate(now));
+		guestbook.setName(name);
+		guestbook.setExpandoBridgeAttributes(serviceContext);
+
+		guestbookPersistence.update(guestbook);
+
+		resourceLocalService.updateResources(serviceContext.getCompanyId(),
+				serviceContext.getScopeGroupId(), name, guestbookId,
+				serviceContext.getGroupPermissions(),
+				serviceContext.getGuestPermissions());
+
+		Indexer indexer = IndexerRegistryUtil
+				.nullSafeGetIndexer(Guestbook.class);
+		indexer.reindex(guestbook);
+
+		return guestbook;
 	}
 
 	protected void validate(String name) throws PortalException {
