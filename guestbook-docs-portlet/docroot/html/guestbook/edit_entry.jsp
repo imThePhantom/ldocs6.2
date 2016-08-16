@@ -1,11 +1,5 @@
 <%@include file="/html/init.jsp"%>
 
-<portlet:renderURL var="viewURL">
-	<portlet:param name="mvcPath" value="/html/guestbook/view.jsp"></portlet:param>
-</portlet:renderURL>
-
-<portlet:actionURL name="addEntry" var="addEntryURL"></portlet:actionURL>
-
 <%
 	long entryId = ParamUtil.getLong(renderRequest, "entryId");
 
@@ -17,17 +11,25 @@
 
 	}
 
-	long guestbookId = ParamUtil.getLong(renderRequest, "guestbookId");
+	Guestbook guestbook = (Guestbook) renderRequest.getAttribute(WebKeys.GUESTBOOK);
 %>
+
+<portlet:renderURL var="viewURL">
+	<portlet:param name="mvcPath" value="/html/guestbook/view.jsp"></portlet:param>
+	<portlet:param name="guestbookName" value="<%= guestbook.getName() %>"/>
+</portlet:renderURL>
+
+<portlet:actionURL name="addEntry" var="addEntryURL">
+	<portlet:param name="guestbookName" value="<%= guestbook.getName() %>"/>
+</portlet:actionURL>
 
 <aui:form action="<%=addEntryURL%>" name="<portlet:namespace />fm">
 	<aui:model-context bean="<%=entry%>" model="<%=Entry.class%>" />
 
 	<aui:fieldset>
 		<aui:input name="entryId" type="hidden" />
-		<aui:input name="guestbookId" type="hidden"
-			value='<%=entry == null ? guestbookId : entry
-							.getGuestbookId()%>' />
+		<aui:input name='guestbookId' type='hidden' 
+			value='<%= String.valueOf(guestbook.getGuestbookId()) %>'/>
 		<aui:input name="name">
 			<aui:validator name="required" />
 		</aui:input>
@@ -66,7 +68,7 @@
 		title="related-assets">
 		<aui:fieldset>
 			<liferay-ui:input-asset-links className="<%=Entry.class.getName()%>"
-				classPK="<%=entryId%>" />
+				classPK="<%=entryId%>" ></liferay-ui:input-asset-links>
 		</aui:fieldset>
 	</liferay-ui:panel>
 

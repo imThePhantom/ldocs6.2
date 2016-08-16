@@ -20,6 +20,7 @@ import java.util.List;
 import com.liferay.docs.guestbook.EntryEmailException;
 import com.liferay.docs.guestbook.EntryMessageException;
 import com.liferay.docs.guestbook.EntryNameException;
+import com.liferay.docs.guestbook.NoSuchEntryException;
 import com.liferay.docs.guestbook.model.Entry;
 import com.liferay.docs.guestbook.service.base.EntryLocalServiceBaseImpl;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -132,6 +133,11 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 		entry = deleteEntry(entryId);
 
 		return entry;
+	}
+
+	public List<Entry> getEntriesByG_G_N(long groupId, long guestbookId,
+			String name) throws SystemException, NoSuchEntryException {
+		return entryPersistence.filterFindByG_G_N(groupId, guestbookId, name);
 	}
 
 	public List<Entry> getEntries(long groupId, long guestbookId)

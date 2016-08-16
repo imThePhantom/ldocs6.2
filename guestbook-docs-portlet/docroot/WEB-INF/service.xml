@@ -30,6 +30,11 @@
 			<finder-column name="groupId"></finder-column>
 		</finder>
 
+		<finder return-type="Collection" name="G_N">
+			<finder-column name="groupId"></finder-column>
+			<finder-column name="name"></finder-column>
+		</finder>
+
 		<!-- Reference -->
 
 		<reference package-path="com.liferay.portlet.asset" entity="AssetEntry" />
@@ -63,6 +68,11 @@
 		<finder name="G_G" return-type="Collection">
 			<finder-column name="groupId"></finder-column>
 			<finder-column name="guestbookId"></finder-column>
+		</finder>
+		<finder name="G_G_N" return-type="Collection">
+			<finder-column name="groupId"></finder-column>
+			<finder-column name="guestbookId"></finder-column>
+			<finder-column name="name"></finder-column>
 		</finder>
 
 		<!-- Reference -->

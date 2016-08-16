@@ -5,6 +5,7 @@
 </portlet:renderURL>
 
 <portlet:actionURL name="addGuestbook" var="addGuestbookURL"></portlet:actionURL>
+<liferay-ui:error key="existing-guestbook" message="existing-guestbook" />
 
 <aui:form action="<%=addGuestbookURL%>" name="<portlet:namespace />fm">
 
