@@ -5,8 +5,10 @@
 	
 	<portlet>
 		<portlet-name>guestbook</portlet-name>
-		<icon>/icon.png</icon>
+		<icon>/guestbook.png</icon>
 		<indexer-class>com.liferay.docs.guestbook.search.EntryIndexer</indexer-class>
+		<asset-renderer-factory>com.liferay.docs.guestbook.asset.GuestbookAssetRendererFactory</asset-renderer-factory>
+		<asset-renderer-factory>com.liferay.docs.guestbook.asset.EntryAssetRendererFactory</asset-renderer-factory>
 		<header-portlet-css>/css/main.css</header-portlet-css>
 		<footer-portlet-javascript>
 			/js/main.js
@@ -15,7 +17,7 @@
 	</portlet>
 	<portlet>
 		<portlet-name>guestbook-admin</portlet-name>
-		<icon>/icon.png</icon>
+		<icon>/guestbook.png</icon>
 		<indexer-class>com.liferay.docs.guestbook.search.GuestbookIndexer</indexer-class>
 		<control-panel-entry-category>
 			site_administration.content

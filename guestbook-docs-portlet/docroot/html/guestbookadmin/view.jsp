@@ -14,22 +14,27 @@
 	</c:if>
 </aui:button-row>
 
- <liferay-ui:search-container>
+<liferay-ui:search-container>
 	<liferay-ui:search-container-results
-		results="<%= GuestbookLocalServiceUtil.getGuestbooks(scopeGroupId,
-				searchContainer.getStart(), searchContainer.getEnd()) %>"
-		total="<%= GuestbookLocalServiceUtil.getGuestbooksCount() %>"
-	/>
+		results="<%=GuestbookLocalServiceUtil.getGuestbooks(scopeGroupId,
+						searchContainer.getStart(), searchContainer.getEnd())%>"
+		total="<%=GuestbookLocalServiceUtil.getGuestbooksCount()%>" />
 
 	<liferay-ui:search-container-row
 		className="com.liferay.docs.guestbook.model.Guestbook"
-		modelVar="guestbook"
-	>
-	<liferay-ui:search-container-column-text property="name"/>
-	<liferay-ui:search-container-column-jsp
-                    path="/html/guestbookadmin/guestbook_actions.jsp"
-                    align="right" />
-                    
+		modelVar="guestbook">
+		<portlet:renderURL var="viewGuestbook">
+			<portlet:param name="mvcPath"
+				value="/html/guestbookadmin/view_guestbook.jsp" />
+			<portlet:param name="guestbookId"
+				value="<%=String.valueOf(guestbook.getGuestbookId())%>" />
+		</portlet:renderURL>
+
+		<liferay-ui:search-container-column-text property="name"
+			href="<%=viewGuestbook%>" />
+		<liferay-ui:search-container-column-jsp
+			path="/html/guestbookadmin/guestbook_actions.jsp" align="right" />
+
 	</liferay-ui:search-container-row>
 
 	<liferay-ui:search-iterator />
