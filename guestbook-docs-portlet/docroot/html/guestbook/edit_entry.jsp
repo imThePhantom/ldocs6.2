@@ -28,9 +28,22 @@
 		<aui:input name="guestbookId" type="hidden"
 			value='<%=entry == null ? guestbookId : entry
 							.getGuestbookId()%>' />
-		<aui:input name="name" />
-		<aui:input name="email" />
-		<aui:input name="message" />
+		<aui:input name="name">
+			<aui:validator name="required" />
+		</aui:input>
+		<aui:input name="email">
+			<aui:validator name="email" />
+			<aui:validator name="required" />
+		</aui:input>
+		<aui:input name="message">
+			<aui:validator name="required" />
+		</aui:input>
+		<div id="counterContainer">
+			<p>
+				<span id="counter"></span> character (s) remaining
+			</p>
+		</div>
+
 		<aui:input name='guestbookId' type='hidden'
 			value='<%=ParamUtil.getString(renderRequest, "guestbookId")%>' />
 
@@ -52,8 +65,8 @@
 		id="entryAssetLinksPanel" persistState="<%=true%>"
 		title="related-assets">
 		<aui:fieldset>
-			<liferay-ui:input-asset-links
-				className="<%=Entry.class.getName()%>" classPK="<%=entryId%>" />
+			<liferay-ui:input-asset-links className="<%=Entry.class.getName()%>"
+				classPK="<%=entryId%>" />
 		</aui:fieldset>
 	</liferay-ui:panel>
 
@@ -64,3 +77,17 @@
 
 	</aui:button-row>
 </aui:form>
+
+<aui:script use="aui-char-counter">
+AUI().use(
+		function(A){
+			new A.CharCounter(
+			{
+				counter: '#counter',
+				input: '#<portlet:namespace/>message',
+				maxLength: 500
+			}
+		);
+	}
+);
+</aui:script>

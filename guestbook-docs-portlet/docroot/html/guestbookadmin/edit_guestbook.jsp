@@ -25,7 +25,15 @@
 		<aui:input type="hidden" name="guestbookId"
 			value='<%=guestbook == null ? "" : guestbook
 							.getGuestbookId()%>' />
-		<aui:input name="name" />
+		<aui:input name="name">
+			<aui:validator name="maxLength">30</aui:validator>
+			<aui:validator name="required" />
+		</aui:input>
+		<div id="counterContainer">
+			<p>
+				<span id="namecounter"></span> character (s) remaining
+			</p>
+		</div>
 	</aui:fieldset>
 
 	<liferay-ui:asset-categories-error />
@@ -54,3 +62,19 @@
 		<aui:button type="cancel" onClick="<%= viewURL %>"></aui:button>
 	</aui:button-row>
 </aui:form>
+
+<aui:script use="aui-char-counter">
+AUI().use(
+  function(A) {
+    new A.CharCounter(
+      {
+        counter: '#namecounter',
+        input: '#<portlet:namespace />name',
+        maxLength: 30
+      }
+    );
+  }
+);
+</aui:script>
+	
+
