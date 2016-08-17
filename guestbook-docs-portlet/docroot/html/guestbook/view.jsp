@@ -18,6 +18,18 @@
 
             <aui:button type="submit" value="search" />
         </span>
+        
+		<span class="add-g-button">
+			<c:if test='<%= GuestbookModelPermission.contains(permissionChecker, scopeGroupId, "ADD_GUESTBOOK") %>'>
+				<portlet:renderURL var="addGuestbookURL">
+					<portlet:param name="mvcPath"
+						value="/html/guestbook/edit_guestbook.jsp" />
+					</portlet:renderURL>
+
+				<aui:button onClick="<%=addGuestbookURL.toString()%>"
+					value="Add Guestbook" />
+			</c:if>
+		</span>
     </div>
 </aui:form>
 
@@ -38,7 +50,6 @@
 
     %>
 
-
     <portlet:renderURL var="viewPageURL">
        <portlet:param name="mvcPath" value="/html/guestbook/view.jsp" />
        <portlet:param name="guestbookName"
@@ -56,24 +67,14 @@
 
 <aui:button-row cssClass="guestbook-buttons">
 
-<c:if test='<%= GuestbookModelPermission.contains(permissionChecker, scopeGroupId, "ADD_GUESTBOOK") %>'>
-    <portlet:renderURL var="addGuestbookURL">
-        <portlet:param name="mvcPath"
-            value="/html/guestbook/edit_guestbook.jsp" />
-    </portlet:renderURL>
+	<c:if test='<%= GuestbookPermission.contains(permissionChecker, guestbook.getGuestbookId(), "ADD_ENTRY") %>'>
+	    <portlet:renderURL var="addEntryURL">
+	        <portlet:param name="mvcPath" value="/html/guestbook/edit_entry.jsp" />
+	        <portlet:param name="guestbookName" value="<%=guestbook.getName()%>" />
+	    </portlet:renderURL>
 
-    <aui:button onClick="<%=addGuestbookURL.toString()%>"
-        value="Add Guestbook" />
-</c:if>
-
-<c:if test='<%= GuestbookPermission.contains(permissionChecker, guestbook.getGuestbookId(), "ADD_ENTRY") %>'>
-    <portlet:renderURL var="addEntryURL">
-        <portlet:param name="mvcPath" value="/html/guestbook/edit_entry.jsp" />
-        <portlet:param name="guestbookName" value="<%=guestbook.getName()%>" />
-    </portlet:renderURL>
-
-    <aui:button onClick="<%=addEntryURL.toString()%>" value="Add Entry"></aui:button>
-</c:if>
+	    <aui:button onClick="<%=addEntryURL.toString()%>" value="Add Entry"></aui:button>
+	</c:if>
 
 </aui:button-row>
 

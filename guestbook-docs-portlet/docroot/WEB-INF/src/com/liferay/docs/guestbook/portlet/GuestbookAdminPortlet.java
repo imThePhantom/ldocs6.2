@@ -30,6 +30,7 @@ public class GuestbookAdminPortlet extends MVCPortlet {
 			GuestbookLocalServiceUtil.addGuestbook(serviceContext.getUserId(),
 					name, serviceContext);
 			SessionMessages.add(actionRequest, "Guestbook Added");
+
 		} catch (Exception e) {
 			SessionErrors.add(actionRequest, e.getClass(), e);
 			actionResponse.setRenderParameter("mvcPath",
@@ -64,13 +65,14 @@ public class GuestbookAdminPortlet extends MVCPortlet {
 			PortalException {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
 				Guestbook.class.getName(), actionRequest);
-		
+
 		long guestbookId = ParamUtil.getLong(actionRequest, "guestbookId");
-		try{
-			GuestbookLocalServiceUtil.deleteGuestbook(guestbookId, serviceContext);
-			
+		try {
+			GuestbookLocalServiceUtil.deleteGuestbook(guestbookId,
+					serviceContext);
+
 			SessionMessages.add(actionRequest, "Guestbook Deleted");
-		} catch (PortalException pe){
+		} catch (PortalException pe) {
 			SessionErrors.add(actionRequest, pe.getClass(), pe);
 		}
 	}
