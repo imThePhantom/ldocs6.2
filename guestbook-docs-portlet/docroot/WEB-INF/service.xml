@@ -21,6 +21,7 @@
 		<column name="userName" type="String"></column>
 		<column name="createDate" type="Date"></column>
 		<column name="modifiedDate" type="Date"></column>
+<<<<<<< HEAD
 		<column name="name" type="String"></column>
 		<column name="entryId" type="long"></column>
 
@@ -40,6 +41,13 @@
 		<reference package-path="com.liferay.portlet.asset" entity="AssetEntry" />
 		<reference package-path="com.liferay.portlet.asset" entity="AssetLink" />
 
+=======
+        <column name="name" type="String"></column>
+        <column name="entryId" type="long"></column>
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	</entity>
 	<entity name="Entry" local-service="true" uuid="true">
 
@@ -58,6 +66,7 @@
 		<column name="userName" type="String"></column>
 		<column name="createDate" type="Date"></column>
 		<column name="modifiedDate" type="Date"></column>
+<<<<<<< HEAD
 		<column name="name" type="String"></column>
 		<column name="email" type="String"></column>
 		<column name="message" type="String"></column>
@@ -86,4 +95,21 @@
 		<exception>EntryEmail</exception>
 		<exception>EntryMessage</exception>
 	</exceptions>
+=======
+        <column name="name" type="String"></column>
+        <column name="email" type="String"></column>
+        <column name="message" type="String"></column>
+        <column name="guestbookId" type="long"></column>
+        <finder name="G_G" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="guestbookId"></finder-column>
+        </finder>
+	</entity>
+    <exceptions>
+        <exception>GuestbookName</exception>
+        <exception>EntryName</exception>
+        <exception>EntryEmail</exception>
+        <exception>EntryMessage</exception>
+    </exceptions>
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 </service-builder>

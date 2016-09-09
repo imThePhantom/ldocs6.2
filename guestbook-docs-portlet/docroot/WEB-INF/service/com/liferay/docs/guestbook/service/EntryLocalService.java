@@ -319,12 +319,15 @@ public interface EntryLocalService extends BaseLocalService,
 			com.liferay.portal.kernel.exception.SystemException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+<<<<<<< HEAD
 	public java.util.List<com.liferay.docs.guestbook.model.Entry> getEntriesByG_G_N(
 		long groupId, long guestbookId, java.lang.String name)
 		throws com.liferay.docs.guestbook.NoSuchEntryException,
 			com.liferay.portal.kernel.exception.SystemException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+=======
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	public java.util.List<com.liferay.docs.guestbook.model.Entry> getEntries(
 		long groupId, long guestbookId)
 		throws com.liferay.portal.kernel.exception.SystemException;

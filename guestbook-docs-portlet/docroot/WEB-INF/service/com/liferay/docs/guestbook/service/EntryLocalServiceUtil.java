@@ -352,6 +352,7 @@ public class EntryLocalServiceUtil {
 		return getService().deleteEntry(entryId, serviceContext);
 	}
 
+<<<<<<< HEAD
 	public static java.util.List<com.liferay.docs.guestbook.model.Entry> getEntriesByG_G_N(
 		long groupId, long guestbookId, java.lang.String name)
 		throws com.liferay.docs.guestbook.NoSuchEntryException,
@@ -359,6 +360,8 @@ public class EntryLocalServiceUtil {
 		return getService().getEntriesByG_G_N(groupId, guestbookId, name);
 	}
 
+=======
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	public static java.util.List<com.liferay.docs.guestbook.model.Entry> getEntries(
 		long groupId, long guestbookId)
 		throws com.liferay.portal.kernel.exception.SystemException {

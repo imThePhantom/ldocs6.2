@@ -1,5 +1,14 @@
 <%@include file="/html/init.jsp"%>
 
+<<<<<<< HEAD
+=======
+<portlet:renderURL var="viewURL">
+	<portlet:param name="mvcPath" value="/html/guestbook/view.jsp"></portlet:param>
+</portlet:renderURL>
+
+<portlet:actionURL name="addEntry" var="addEntryURL"></portlet:actionURL>
+
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 <%
 	long entryId = ParamUtil.getLong(renderRequest, "entryId");
 
@@ -11,6 +20,7 @@
 
 	}
 
+<<<<<<< HEAD
 	Guestbook guestbook = (Guestbook) renderRequest.getAttribute(WebKeys.GUESTBOOK);
 %>
 
@@ -23,11 +33,17 @@
 	<portlet:param name="guestbookName" value="<%= guestbook.getName() %>"/>
 </portlet:actionURL>
 
+=======
+	long guestbookId = ParamUtil.getLong(renderRequest, "guestbookId");
+%>
+
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 <aui:form action="<%=addEntryURL%>" name="<portlet:namespace />fm">
 	<aui:model-context bean="<%=entry%>" model="<%=Entry.class%>" />
 
 	<aui:fieldset>
 		<aui:input name="entryId" type="hidden" />
+<<<<<<< HEAD
 		<aui:input name='guestbookId' type='hidden' 
 			value='<%= String.valueOf(guestbook.getGuestbookId()) %>'/>
 		<aui:input name="name">
@@ -46,11 +62,20 @@
 			</p>
 		</div>
 
+=======
+		<aui:input name="guestbookId" type="hidden"
+			value='<%=entry == null ? guestbookId : entry
+							.getGuestbookId()%>' />
+		<aui:input name="name" />
+		<aui:input name="email" />
+		<aui:input name="message" />
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 		<aui:input name='guestbookId' type='hidden'
 			value='<%=ParamUtil.getString(renderRequest, "guestbookId")%>' />
 
 	</aui:fieldset>
 
+<<<<<<< HEAD
 	<liferay-ui:asset-categories-error />
 	<liferay-ui:asset-tags-error />
 	<liferay-ui:panel defaultState="closed" extended="<%=false%>"
@@ -72,12 +97,15 @@
 		</aui:fieldset>
 	</liferay-ui:panel>
 
+=======
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	<aui:button-row>
 
 		<aui:button type="submit"></aui:button>
 		<aui:button type="cancel" onClick="<%= viewURL.toString() %>"></aui:button>
 
 	</aui:button-row>
+<<<<<<< HEAD
 </aui:form>
 
 <aui:script use="aui-char-counter">
@@ -93,3 +121,6 @@ AUI().use(
 	}
 );
 </aui:script>
+=======
+</aui:form>
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565

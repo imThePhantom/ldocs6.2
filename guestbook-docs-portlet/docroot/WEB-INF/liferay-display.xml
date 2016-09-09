@@ -6,7 +6,10 @@
 	<category name="category.sample">
 		<portlet id="guestbook"></portlet>
 	</category>
+<<<<<<< HEAD
 	<category name="category.hidden">
 		<portlet id="guestbook-admin"></portlet>
 	</category>
+=======
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 </display>

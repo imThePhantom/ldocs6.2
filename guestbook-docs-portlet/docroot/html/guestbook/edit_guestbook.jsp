@@ -5,13 +5,20 @@
 </portlet:renderURL>
 
 <portlet:actionURL name="addGuestbook" var="addGuestbookURL"></portlet:actionURL>
+<<<<<<< HEAD
 <liferay-ui:error key="existing-guestbook" message="existing-guestbook" />
+=======
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 
 <aui:form action="<%=addGuestbookURL%>" name="<portlet:namespace />fm">
 
 	<aui:fieldset>
 
+<<<<<<< HEAD
 		<aui:input name="guestbookName" label="Guestbook Name"/>
+=======
+		<aui:input name="name" />
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 
 	</aui:fieldset>
 

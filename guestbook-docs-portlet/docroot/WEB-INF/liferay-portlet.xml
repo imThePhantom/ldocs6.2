@@ -5,6 +5,7 @@
 	
 	<portlet>
 		<portlet-name>guestbook</portlet-name>
+<<<<<<< HEAD
 		<icon>/guestbook.png</icon>
 		<indexer-class>com.liferay.docs.guestbook.search.EntryIndexer</indexer-class>
 		<friendly-url-mapper-class>com.liferay.portal.kernel.portlet.DefaultFriendlyURLMapper</friendly-url-mapper-class>
@@ -12,12 +13,16 @@
 		<friendly-url-routes>com/liferay/docs/guestbook/portlet/guestbook-friendly-url-routes.xml</friendly-url-routes>
 		<asset-renderer-factory>com.liferay.docs.guestbook.asset.GuestbookAssetRendererFactory</asset-renderer-factory>
 		<asset-renderer-factory>com.liferay.docs.guestbook.asset.EntryAssetRendererFactory</asset-renderer-factory>
+=======
+		<icon>/icon.png</icon>
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 		<header-portlet-css>/css/main.css</header-portlet-css>
 		<footer-portlet-javascript>
 			/js/main.js
 		</footer-portlet-javascript>
 		<css-class-wrapper>guestbook-portlet</css-class-wrapper>
 	</portlet>
+<<<<<<< HEAD
 	<portlet>
 		<portlet-name>guestbook-admin</portlet-name>
 		<icon>/guestbook.png</icon>
@@ -32,6 +37,8 @@
 		</footer-portlet-javascript>
 		<css-class-wrapper>guestbook-admin-portlet</css-class-wrapper>
 	</portlet>
+=======
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	<role-mapper>
 		<role-name>administrator</role-name>
 		<role-link>Administrator</role-link>

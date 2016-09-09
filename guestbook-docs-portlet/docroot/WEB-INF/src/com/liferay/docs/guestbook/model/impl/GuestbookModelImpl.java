@@ -96,9 +96,14 @@ public class GuestbookModelImpl extends BaseModelImpl<Guestbook>
 			true);
 	public static long COMPANYID_COLUMN_BITMASK = 1L;
 	public static long GROUPID_COLUMN_BITMASK = 2L;
+<<<<<<< HEAD
 	public static long NAME_COLUMN_BITMASK = 4L;
 	public static long UUID_COLUMN_BITMASK = 8L;
 	public static long GUESTBOOKID_COLUMN_BITMASK = 16L;
+=======
+	public static long UUID_COLUMN_BITMASK = 4L;
+	public static long GUESTBOOKID_COLUMN_BITMASK = 8L;
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -417,6 +422,7 @@ public class GuestbookModelImpl extends BaseModelImpl<Guestbook>
 
 	@Override
 	public void setName(String name) {
+<<<<<<< HEAD
 		_columnBitmask |= NAME_COLUMN_BITMASK;
 
 		if (_originalName == null) {
@@ -430,6 +436,11 @@ public class GuestbookModelImpl extends BaseModelImpl<Guestbook>
 		return GetterUtil.getString(_originalName);
 	}
 
+=======
+		_name = name;
+	}
+
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	@JSON
 	@Override
 	public long getEntryId() {
@@ -550,8 +561,11 @@ public class GuestbookModelImpl extends BaseModelImpl<Guestbook>
 
 		guestbookModelImpl._setOriginalCompanyId = false;
 
+<<<<<<< HEAD
 		guestbookModelImpl._originalName = guestbookModelImpl._name;
 
+=======
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 		guestbookModelImpl._columnBitmask = 0;
 	}
 
@@ -716,7 +730,10 @@ public class GuestbookModelImpl extends BaseModelImpl<Guestbook>
 	private Date _createDate;
 	private Date _modifiedDate;
 	private String _name;
+<<<<<<< HEAD
 	private String _originalName;
+=======
+>>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	private long _entryId;
 	private long _columnBitmask;
 	private Guestbook _escapedModel;
