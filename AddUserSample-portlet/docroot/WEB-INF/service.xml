@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="com.liferay.adduser">
+	<author>phantoan</author>
+	<namespace>PT</namespace>
+
+	<entity name="UserInfo" local-service="true" uuid="true">
+		<!-- PK fields -->
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="creatorId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+		
+		<!-- UserInfo data fields -->
+        <column name="userId" type="long"></column>
+        <column name="code" type="String" primary="true"></column>
+        <column name="username" type="String"></column>
+        <column name="email" type="String"></column>
+        <column name="phone" type="String"></column>
+        <finder name="userCode" return-type="Collection">
+            <finder-column name="code"></finder-column>
+        </finder>
+        <finder name="groupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="userId" return-type="UserInfo">
+            <finder-column name="userId"></finder-column>
+        </finder>
+	</entity>
+    <exceptions>
+        <exception>UserInfoCode</exception>
+        <exception>UserInfoUsername</exception>
+        <exception>UserInfoEmail</exception>
+        <exception>UserInfoPhone</exception>
+    </exceptions>
+</service-builder>
