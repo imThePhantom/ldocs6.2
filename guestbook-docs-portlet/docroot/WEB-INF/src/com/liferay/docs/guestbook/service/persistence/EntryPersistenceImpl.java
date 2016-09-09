@@ -2354,7 +2354,6 @@ public class EntryPersistenceImpl extends BasePersistenceImpl<Entry>
 
 	private static final String _FINDER_COLUMN_G_G_GROUPID_2 = "entry.groupId = ? AND ";
 	private static final String _FINDER_COLUMN_G_G_GUESTBOOKID_2 = "entry.guestbookId = ?";
-<<<<<<< HEAD
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_G_G_N = new FinderPath(EntryModelImpl.ENTITY_CACHE_ENABLED,
 			EntryModelImpl.FINDER_CACHE_ENABLED, EntryImpl.class,
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByG_G_N",
@@ -3408,8 +3407,6 @@ public class EntryPersistenceImpl extends BasePersistenceImpl<Entry>
 	private static final String _FINDER_COLUMN_G_G_N_NAME_1 = "entry.name IS NULL";
 	private static final String _FINDER_COLUMN_G_G_N_NAME_2 = "entry.name = ?";
 	private static final String _FINDER_COLUMN_G_G_N_NAME_3 = "(entry.name IS NULL OR entry.name = '')";
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 
 	public EntryPersistenceImpl() {
 		setModelClass(Entry.class);
@@ -3747,7 +3744,6 @@ public class EntryPersistenceImpl extends BasePersistenceImpl<Entry>
 				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_G,
 					args);
 			}
-<<<<<<< HEAD
 
 			if ((entryModelImpl.getColumnBitmask() &
 					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_G_N.getColumnBitmask()) != 0) {
@@ -3771,8 +3767,6 @@ public class EntryPersistenceImpl extends BasePersistenceImpl<Entry>
 				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_G_N,
 					args);
 			}
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 		}
 
 		EntityCacheUtil.putResult(EntryModelImpl.ENTITY_CACHE_ENABLED,

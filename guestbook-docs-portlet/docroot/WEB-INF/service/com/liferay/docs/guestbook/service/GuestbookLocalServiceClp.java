@@ -137,7 +137,6 @@ public class GuestbookLocalServiceClp implements GuestbookLocalService {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-<<<<<<< HEAD
 		_methodName24 = "deleteGuestbook";
 
 		_methodParameterTypes24 = new String[] {
@@ -169,15 +168,6 @@ public class GuestbookLocalServiceClp implements GuestbookLocalService {
 				"long", "long", "java.lang.String",
 				"com.liferay.portal.service.ServiceContext"
 			};
-=======
-		_methodName24 = "getGuestbooks";
-
-		_methodParameterTypes24 = new String[] { "long" };
-
-		_methodName25 = "getGuestbooks";
-
-		_methodParameterTypes25 = new String[] { "long", "int", "int" };
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	}
 
 	@Override
@@ -903,7 +893,6 @@ public class GuestbookLocalServiceClp implements GuestbookLocalService {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public com.liferay.docs.guestbook.model.Guestbook deleteGuestbook(
 		long guestbookId,
 		com.liferay.portal.service.ServiceContext serviceContext)
@@ -986,21 +975,14 @@ public class GuestbookLocalServiceClp implements GuestbookLocalService {
 	}
 
 	@Override
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	public java.util.List<com.liferay.docs.guestbook.model.Guestbook> getGuestbooks(
 		long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
-<<<<<<< HEAD
 			returnObj = _invokableLocalService.invokeMethod(_methodName26,
 					_methodParameterTypes26, new Object[] { groupId });
-=======
-			returnObj = _invokableLocalService.invokeMethod(_methodName24,
-					_methodParameterTypes24, new Object[] { groupId });
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -1028,13 +1010,8 @@ public class GuestbookLocalServiceClp implements GuestbookLocalService {
 		Object returnObj = null;
 
 		try {
-<<<<<<< HEAD
 			returnObj = _invokableLocalService.invokeMethod(_methodName27,
 					_methodParameterTypes27,
-=======
-			returnObj = _invokableLocalService.invokeMethod(_methodName25,
-					_methodParameterTypes25,
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 					new Object[] { groupId, start, end });
 		}
 		catch (Throwable t) {
@@ -1056,7 +1033,6 @@ public class GuestbookLocalServiceClp implements GuestbookLocalService {
 		return (java.util.List<com.liferay.docs.guestbook.model.Guestbook>)ClpSerializer.translateOutput(returnObj);
 	}
 
-<<<<<<< HEAD
 	@Override
 	public int getGuestbooksCount(long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException {
@@ -1129,8 +1105,6 @@ public class GuestbookLocalServiceClp implements GuestbookLocalService {
 		return (com.liferay.docs.guestbook.model.Guestbook)ClpSerializer.translateOutput(returnObj);
 	}
 
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	private InvokableLocalService _invokableLocalService;
 	private String _methodName0;
 	private String[] _methodParameterTypes0;
@@ -1182,7 +1156,6 @@ public class GuestbookLocalServiceClp implements GuestbookLocalService {
 	private String[] _methodParameterTypes24;
 	private String _methodName25;
 	private String[] _methodParameterTypes25;
-<<<<<<< HEAD
 	private String _methodName26;
 	private String[] _methodParameterTypes26;
 	private String _methodName27;
@@ -1191,6 +1164,4 @@ public class GuestbookLocalServiceClp implements GuestbookLocalService {
 	private String[] _methodParameterTypes28;
 	private String _methodName29;
 	private String[] _methodParameterTypes29;
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 }

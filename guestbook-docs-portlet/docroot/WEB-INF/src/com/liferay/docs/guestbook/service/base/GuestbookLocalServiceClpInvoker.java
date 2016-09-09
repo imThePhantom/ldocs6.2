@@ -122,7 +122,6 @@ public class GuestbookLocalServiceClpInvoker {
 				"com.liferay.docs.guestbook.model.Guestbook"
 			};
 
-<<<<<<< HEAD
 		_methodName54 = "getBeanIdentifier";
 
 		_methodParameterTypes54 = new String[] {  };
@@ -134,24 +133,10 @@ public class GuestbookLocalServiceClpInvoker {
 		_methodName60 = "addGuestbook";
 
 		_methodParameterTypes60 = new String[] {
-=======
-		_methodName44 = "getBeanIdentifier";
-
-		_methodParameterTypes44 = new String[] {  };
-
-		_methodName45 = "setBeanIdentifier";
-
-		_methodParameterTypes45 = new String[] { "java.lang.String" };
-
-		_methodName50 = "addGuestbook";
-
-		_methodParameterTypes50 = new String[] {
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 				"long", "java.lang.String",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-<<<<<<< HEAD
 		_methodName61 = "deleteGuestbook";
 
 		_methodParameterTypes61 = new String[] {
@@ -183,15 +168,6 @@ public class GuestbookLocalServiceClpInvoker {
 				"long", "long", "java.lang.String",
 				"com.liferay.portal.service.ServiceContext"
 			};
-=======
-		_methodName51 = "getGuestbooks";
-
-		_methodParameterTypes51 = new String[] { "long" };
-
-		_methodName52 = "getGuestbooks";
-
-		_methodParameterTypes52 = new String[] { "long", "int", "int" };
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -307,7 +283,6 @@ public class GuestbookLocalServiceClpInvoker {
 			return GuestbookLocalServiceUtil.updateGuestbook((com.liferay.docs.guestbook.model.Guestbook)arguments[0]);
 		}
 
-<<<<<<< HEAD
 		if (_methodName54.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes54, parameterTypes)) {
 			return GuestbookLocalServiceUtil.getBeanIdentifier();
@@ -315,33 +290,18 @@ public class GuestbookLocalServiceClpInvoker {
 
 		if (_methodName55.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes55, parameterTypes)) {
-=======
-		if (_methodName44.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes44, parameterTypes)) {
-			return GuestbookLocalServiceUtil.getBeanIdentifier();
-		}
-
-		if (_methodName45.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes45, parameterTypes)) {
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 			GuestbookLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-<<<<<<< HEAD
 		if (_methodName60.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes60, parameterTypes)) {
-=======
-		if (_methodName50.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes50, parameterTypes)) {
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 			return GuestbookLocalServiceUtil.addGuestbook(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1],
 				(com.liferay.portal.service.ServiceContext)arguments[2]);
 		}
 
-<<<<<<< HEAD
 		if (_methodName61.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes61, parameterTypes)) {
 			return GuestbookLocalServiceUtil.deleteGuestbook(((Long)arguments[0]).longValue(),
@@ -362,21 +322,11 @@ public class GuestbookLocalServiceClpInvoker {
 
 		if (_methodName64.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes64, parameterTypes)) {
-=======
-		if (_methodName51.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes51, parameterTypes)) {
-			return GuestbookLocalServiceUtil.getGuestbooks(((Long)arguments[0]).longValue());
-		}
-
-		if (_methodName52.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes52, parameterTypes)) {
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 			return GuestbookLocalServiceUtil.getGuestbooks(((Long)arguments[0]).longValue(),
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue());
 		}
 
-<<<<<<< HEAD
 		if (_methodName65.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes65, parameterTypes)) {
 			return GuestbookLocalServiceUtil.getGuestbooksCount(((Long)arguments[0]).longValue());
@@ -390,8 +340,6 @@ public class GuestbookLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[3]);
 		}
 
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 		throw new UnsupportedOperationException();
 	}
 
@@ -435,7 +383,6 @@ public class GuestbookLocalServiceClpInvoker {
 	private String[] _methodParameterTypes18;
 	private String _methodName19;
 	private String[] _methodParameterTypes19;
-<<<<<<< HEAD
 	private String _methodName54;
 	private String[] _methodParameterTypes54;
 	private String _methodName55;
@@ -454,16 +401,4 @@ public class GuestbookLocalServiceClpInvoker {
 	private String[] _methodParameterTypes65;
 	private String _methodName66;
 	private String[] _methodParameterTypes66;
-=======
-	private String _methodName44;
-	private String[] _methodParameterTypes44;
-	private String _methodName45;
-	private String[] _methodParameterTypes45;
-	private String _methodName50;
-	private String[] _methodParameterTypes50;
-	private String _methodName51;
-	private String[] _methodParameterTypes51;
-	private String _methodName52;
-	private String[] _methodParameterTypes52;
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 }

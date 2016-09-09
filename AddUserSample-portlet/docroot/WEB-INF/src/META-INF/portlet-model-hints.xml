@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.liferay.adduser.model.UserInfo">
+		<field name="uuid" type="String" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="creatorId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="userId" type="long" />
+		<field name="code" type="String" />
+		<field name="username" type="String" />
+		<field name="email" type="String" />
+		<field name="phone" type="String" />
+	</model>
+</model-hints>

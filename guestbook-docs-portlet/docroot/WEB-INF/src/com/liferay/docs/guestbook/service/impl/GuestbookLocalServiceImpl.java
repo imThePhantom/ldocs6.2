@@ -18,7 +18,6 @@ import java.util.Date;
 import java.util.List;
 
 import com.liferay.docs.guestbook.GuestbookNameException;
-<<<<<<< HEAD
 import com.liferay.docs.guestbook.NoSuchGuestbookException;
 import com.liferay.docs.guestbook.model.Entry;
 import com.liferay.docs.guestbook.model.Guestbook;
@@ -37,15 +36,6 @@ import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.UserLocalServiceUtil;
 import com.liferay.portlet.asset.model.AssetEntry;
 import com.liferay.portlet.asset.model.AssetLinkConstants;
-=======
-import com.liferay.docs.guestbook.model.Guestbook;
-import com.liferay.docs.guestbook.service.base.GuestbookLocalServiceBaseImpl;
-import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.kernel.util.Validator;
-import com.liferay.portal.model.User;
-import com.liferay.portal.service.ServiceContext;
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 
 /**
  * The implementation of the guestbook local service.
@@ -78,7 +68,6 @@ public class GuestbookLocalServiceImpl extends GuestbookLocalServiceBaseImpl {
 			PortalException {
 		long groupId = serviceContext.getScopeGroupId();
 
-<<<<<<< HEAD
 		List<Guestbook> test = guestbookPersistence.findByG_N(groupId, name);
 
 		if (test.size() > 0) {
@@ -87,8 +76,6 @@ public class GuestbookLocalServiceImpl extends GuestbookLocalServiceBaseImpl {
 
 		}
 
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 		User user = userPersistence.findByPrimaryKey(userId);
 
 		Date now = new Date();
@@ -112,7 +99,6 @@ public class GuestbookLocalServiceImpl extends GuestbookLocalServiceBaseImpl {
 		guestbookPersistence.update(guestbook);
 
 		resourceLocalService.addResources(user.getCompanyId(), groupId, userId,
-<<<<<<< HEAD
 				Guestbook.class.getName(), guestbookId, false, true, true);
 
 		AssetEntry assetEntry = assetEntryLocalService.updateEntry(userId,
@@ -176,13 +162,6 @@ public class GuestbookLocalServiceImpl extends GuestbookLocalServiceBaseImpl {
 				orderByComparator);
 	}
 
-=======
-			       Guestbook.class.getName(), guestbookId, false, true, true);
-		
-		return guestbook;
-	}
-
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	public List<Guestbook> getGuestbooks(long groupId) throws SystemException {
 		return guestbookPersistence.findByGroupId(groupId);
 	}
@@ -192,7 +171,6 @@ public class GuestbookLocalServiceImpl extends GuestbookLocalServiceBaseImpl {
 		return guestbookPersistence.findByGroupId(groupId, start, end);
 	}
 
-<<<<<<< HEAD
 	public int getGuestbooksCount(long groupId) throws SystemException {
 		return guestbookPersistence.countByGroupId(groupId);
 	}
@@ -240,8 +218,6 @@ public class GuestbookLocalServiceImpl extends GuestbookLocalServiceBaseImpl {
 		return guestbook;
 	}
 
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	protected void validate(String name) throws PortalException {
 		if (Validator.isNull(name)) {
 			throw new GuestbookNameException();

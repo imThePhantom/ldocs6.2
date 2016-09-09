@@ -316,7 +316,6 @@ public interface GuestbookLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
-<<<<<<< HEAD
 	public com.liferay.docs.guestbook.model.Guestbook deleteGuestbook(
 		long guestbookId,
 		com.liferay.portal.service.ServiceContext serviceContext)
@@ -330,8 +329,6 @@ public interface GuestbookLocalService extends BaseLocalService,
 		throws com.liferay.docs.guestbook.NoSuchGuestbookException,
 			com.liferay.portal.kernel.exception.SystemException;
 
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<com.liferay.docs.guestbook.model.Guestbook> getGuestbooks(
 		long groupId)
@@ -341,7 +338,6 @@ public interface GuestbookLocalService extends BaseLocalService,
 	public java.util.List<com.liferay.docs.guestbook.model.Guestbook> getGuestbooks(
 		long groupId, int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException;
-<<<<<<< HEAD
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getGuestbooksCount(long groupId)
@@ -352,6 +348,4 @@ public interface GuestbookLocalService extends BaseLocalService,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 }

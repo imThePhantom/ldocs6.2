@@ -20,29 +20,20 @@ import java.util.List;
 import com.liferay.docs.guestbook.EntryEmailException;
 import com.liferay.docs.guestbook.EntryMessageException;
 import com.liferay.docs.guestbook.EntryNameException;
-<<<<<<< HEAD
 import com.liferay.docs.guestbook.NoSuchEntryException;
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 import com.liferay.docs.guestbook.model.Entry;
 import com.liferay.docs.guestbook.service.base.EntryLocalServiceBaseImpl;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-<<<<<<< HEAD
 import com.liferay.portal.kernel.search.Indexer;
 import com.liferay.portal.kernel.search.IndexerRegistryUtil;
 import com.liferay.portal.kernel.util.ContentTypes;
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
-<<<<<<< HEAD
 import com.liferay.portlet.asset.model.AssetEntry;
 import com.liferay.portlet.asset.model.AssetLinkConstants;
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 
 /**
  * The implementation of the entry local service.
@@ -98,7 +89,6 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 		entryPersistence.update(entry);
 
 		resourceLocalService.addResources(user.getCompanyId(), groupId, userId,
-<<<<<<< HEAD
 				Entry.class.getName(), entryId, false, true, true);
 
 		AssetEntry assetEntry = assetEntryLocalService.updateEntry(userId,
@@ -117,15 +107,10 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 
 		indexer.reindex(entry);
 
-=======
-			       Entry.class.getName(), entryId, false, true, true);
-		
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 		return entry;
 	}
 
 	public Entry deleteEntry(long entryId, ServiceContext serviceContext)
-<<<<<<< HEAD
 			throws PortalException, SystemException {
 
 		Entry entry = getEntry(entryId);
@@ -155,21 +140,6 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 		return entryPersistence.filterFindByG_G_N(groupId, guestbookId, name);
 	}
 
-=======
-		    throws PortalException, SystemException {
-
-		    Entry entry = getEntry(entryId);
-
-		    resourceLocalService.deleteResource(
-		        serviceContext.getCompanyId(), Entry.class.getName(),
-		        ResourceConstants.SCOPE_INDIVIDUAL, entryId);
-
-		        entry = deleteEntry(entryId);
-
-		        return entry;
-		}
-	
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	public List<Entry> getEntries(long groupId, long guestbookId)
 			throws SystemException {
 
@@ -182,7 +152,6 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 		return entryPersistence.findByG_G(groupId, guestbookId, start, end);
 	}
 
-<<<<<<< HEAD
 	public Entry updateEntry(long userId, long guestbookId, long entryId,
 			String name, String email, String message,
 			ServiceContext serviceContext) throws PortalException,
@@ -231,41 +200,6 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 		return entry;
 	}
 
-=======
-	public Entry updateEntry(
-	        long userId, long guestbookId, long entryId, String name,
-	        String email, String message, ServiceContext serviceContext)
-	    throws PortalException, SystemException {
-
-	    long groupId = serviceContext.getScopeGroupId();
-
-	    User user = userPersistence.findByPrimaryKey(userId);
-
-	    Date now = new Date();
-
-	    validate(name, email, message);
-
-	    Entry entry = getEntry(entryId);
-
-	    entry.setUserId(userId);
-	    entry.setUserName(user.getFullName());
-	    entry.setName(name);
-	    entry.setEmail(email);
-	    entry.setMessage(message);
-	    entry.setModifiedDate(serviceContext.getModifiedDate(now));
-	    entry.setExpandoBridgeAttributes(serviceContext);
-
-	    entryPersistence.update(entry);
-
-	    resourceLocalService.updateResources(
-	        user.getCompanyId(), groupId, Entry.class.getName(), entryId,
-	        serviceContext.getGroupPermissions(),
-	        serviceContext.getGuestPermissions());
-
-	    return entry;
-	}
-	
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	protected void validate(String name, String email, String entry)
 			throws PortalException {
 		if (Validator.isNull(name)) {

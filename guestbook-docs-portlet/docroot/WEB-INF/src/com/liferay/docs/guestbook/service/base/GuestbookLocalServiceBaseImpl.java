@@ -36,12 +36,9 @@ import com.liferay.portal.service.BaseLocalServiceImpl;
 import com.liferay.portal.service.PersistedModelLocalServiceRegistryUtil;
 import com.liferay.portal.service.persistence.UserPersistence;
 
-<<<<<<< HEAD
 import com.liferay.portlet.asset.service.persistence.AssetEntryPersistence;
 import com.liferay.portlet.asset.service.persistence.AssetLinkPersistence;
 
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 import java.io.Serializable;
 
 import java.util.List;
@@ -550,7 +547,6 @@ public abstract class GuestbookLocalServiceBaseImpl extends BaseLocalServiceImpl
 		this.userPersistence = userPersistence;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * Returns the asset entry local service.
 	 *
@@ -646,8 +642,6 @@ public abstract class GuestbookLocalServiceBaseImpl extends BaseLocalServiceImpl
 		this.assetLinkPersistence = assetLinkPersistence;
 	}
 
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	public void afterPropertiesSet() {
 		Class<?> clazz = getClass();
 
@@ -752,7 +746,6 @@ public abstract class GuestbookLocalServiceBaseImpl extends BaseLocalServiceImpl
 	protected com.liferay.portal.service.UserService userService;
 	@BeanReference(type = UserPersistence.class)
 	protected UserPersistence userPersistence;
-<<<<<<< HEAD
 	@BeanReference(type = com.liferay.portlet.asset.service.AssetEntryLocalService.class)
 	protected com.liferay.portlet.asset.service.AssetEntryLocalService assetEntryLocalService;
 	@BeanReference(type = com.liferay.portlet.asset.service.AssetEntryService.class)
@@ -763,8 +756,6 @@ public abstract class GuestbookLocalServiceBaseImpl extends BaseLocalServiceImpl
 	protected com.liferay.portlet.asset.service.AssetLinkLocalService assetLinkLocalService;
 	@BeanReference(type = AssetLinkPersistence.class)
 	protected AssetLinkPersistence assetLinkPersistence;
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	private String _beanIdentifier;
 	private ClassLoader _classLoader;
 	private GuestbookLocalServiceClpInvoker _clpInvoker = new GuestbookLocalServiceClpInvoker();

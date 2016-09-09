@@ -84,7 +84,7 @@
 				<action-key>VIEW</action-key>
 			</site-member-defaults>
 			<guest-defaults>
-				<action-key>VIEW</action-key>
+
 			</guest-defaults>
 			<guest-unsupported>
 				<action-key>UPDATE</action-key>

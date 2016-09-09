@@ -35,7 +35,6 @@
 			<role-name>user</role-name>
 		</security-role-ref>
 	</portlet>
-<<<<<<< HEAD
 	<portlet>
 		<portlet-name>guestbook-admin</portlet-name>
 		<display-name>Guestbook Admin</display-name>
@@ -69,6 +68,4 @@
 			<role-name>user</role-name>
 		</security-role-ref>
 	</portlet>
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 </portlet-app>

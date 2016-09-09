@@ -613,7 +613,6 @@ public interface EntryPersistence extends BasePersistence<Entry> {
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-<<<<<<< HEAD
 	* Returns all the entries where groupId = &#63; and guestbookId = &#63; and name = &#63;.
 	*
 	* @param groupId the group ID
@@ -860,8 +859,6 @@ public interface EntryPersistence extends BasePersistence<Entry> {
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	* Caches the entry in the entity cache if it is enabled.
 	*
 	* @param entry the entry

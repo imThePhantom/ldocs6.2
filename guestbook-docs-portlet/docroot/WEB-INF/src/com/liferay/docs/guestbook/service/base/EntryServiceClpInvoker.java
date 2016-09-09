@@ -24,7 +24,6 @@ import java.util.Arrays;
  */
 public class EntryServiceClpInvoker {
 	public EntryServiceClpInvoker() {
-<<<<<<< HEAD
 		_methodName34 = "getBeanIdentifier";
 
 		_methodParameterTypes34 = new String[] {  };
@@ -32,20 +31,10 @@ public class EntryServiceClpInvoker {
 		_methodName35 = "setBeanIdentifier";
 
 		_methodParameterTypes35 = new String[] { "java.lang.String" };
-=======
-		_methodName24 = "getBeanIdentifier";
-
-		_methodParameterTypes24 = new String[] {  };
-
-		_methodName25 = "setBeanIdentifier";
-
-		_methodParameterTypes25 = new String[] { "java.lang.String" };
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
 		Object[] arguments) throws Throwable {
-<<<<<<< HEAD
 		if (_methodName34.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes34, parameterTypes)) {
 			return EntryServiceUtil.getBeanIdentifier();
@@ -53,15 +42,6 @@ public class EntryServiceClpInvoker {
 
 		if (_methodName35.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes35, parameterTypes)) {
-=======
-		if (_methodName24.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes24, parameterTypes)) {
-			return EntryServiceUtil.getBeanIdentifier();
-		}
-
-		if (_methodName25.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes25, parameterTypes)) {
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 			EntryServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
@@ -70,15 +50,8 @@ public class EntryServiceClpInvoker {
 		throw new UnsupportedOperationException();
 	}
 
-<<<<<<< HEAD
 	private String _methodName34;
 	private String[] _methodParameterTypes34;
 	private String _methodName35;
 	private String[] _methodParameterTypes35;
-=======
-	private String _methodName24;
-	private String[] _methodParameterTypes24;
-	private String _methodName25;
-	private String[] _methodParameterTypes25;
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 }

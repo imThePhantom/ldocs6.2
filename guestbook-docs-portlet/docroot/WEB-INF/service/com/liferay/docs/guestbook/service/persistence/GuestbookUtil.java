@@ -765,7 +765,6 @@ public class GuestbookUtil {
 	}
 
 	/**
-<<<<<<< HEAD
 	* Returns all the guestbooks where groupId = &#63; and name = &#63;.
 	*
 	* @param groupId the group ID
@@ -1029,8 +1028,6 @@ public class GuestbookUtil {
 	}
 
 	/**
-=======
->>>>>>> 31b57708474fe8479443b578524d0d8a8e3c6565
 	* Caches the guestbook in the entity cache if it is enabled.
 	*
 	* @param guestbook the guestbook
